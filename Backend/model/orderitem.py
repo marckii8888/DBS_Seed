@@ -84,25 +84,20 @@ def delete(id):
         "response" : "item not found"
     })
 # Update an order from OrderItem table
-
-'''
-@app.route('/data/<int:id>/update',methods = ['GET','POST'])
+@app.route('/orderitem/<int:id>/update', methods=['POST'])
 def update(id):
-    employee = EmployeeModel.query.filter_by(employee_id=id).first()
-    if request.method == 'POST':
-        if employee:
-            db.session.delete(employee)
-            db.session.commit()
- 
-            name = request.form['name']
-            age = request.form['age']
-            position = request.form['position']
-            employee = EmployeeModel(employee_id=id, name=name, age=age, position = position)
- 
-            db.session.add(employee)
-            db.session.commit()
-            return redirect(f'/data/{id}')
-        return f"Employee with id = {id} Does nit exist"
- 
-    return render_template('update.html', employee = employee)
-'''
+    order = OrderItem.query.filter_by(order_id=id).first()
+    if order:
+        db.session.delete(order)
+        db.session.commit()
+        data = request.get_json()
+        product_id = data['product_id']
+        order_id = data['order_id']
+        product_qty = data['product_qty']
+        total_price = data['total_price']
+        orderItem = OrderItem(product_id=product_id, order_id=order_id, product_qty=product_qty, total_price=total_price)
+        db.session.add(orderItem)
+        db.session.commit()
+
+        return make_response(jsonify({"response": "Added"}), 200)
+    return make_response(jsonify({"response": "No such order"}), 200)

@@ -41,3 +41,22 @@ def get_all():
     return jsonify({
         "product": [product.json() for product in Products.query.all()]
     })
+
+# Update an product
+@app.route('/product/<int:id>/update', methods=['POST'])
+def update(id):
+    order = Products.query.filter_by(id=id).first()
+    if order:
+        db.session.delete(order)
+        db.session.commit()
+        data = request.get_json()
+        product_id = data['product_id']
+        order_id = data['order_id']
+        product_qty = data['product_qty']
+        total_price = data['total_price']
+        orderItem = Products(product_id=product_id, order_id=order_id, product_qty=product_qty, total_price=total_price)
+        db.session.add(orderItem)
+        db.session.commit()
+
+        return make_response(jsonify({"response": "Added"}), 200)
+    return make_response(jsonify({"response": "No such order"}), 200)
