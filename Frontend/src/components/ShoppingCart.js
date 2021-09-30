@@ -31,11 +31,11 @@ const ShoppingCart = () => {
             },
         ]
     }
-    totalPriceHandler();
-    const totalPriceHandler = () =>{
-        setTotalPrice(totalPrice+ shopItem.price);
-      }
-    const [totalPrice, setTotalPrice] = useState(0.00);
+    // totalPriceHandler();
+    // const totalPriceHandler = () =>{
+    //     setTotalPrice(totalPrice+ shopItem.price);
+    //   }
+    // const [totalPrice, setTotalPrice] = useState(0.00);
 
     const cartDataBody = ShopList.shopList.map((shopitem, index) => {
       return (<tr key={index}>
@@ -45,7 +45,7 @@ const ShoppingCart = () => {
                 <td><button type="submit" className="ui button red">Delete</button></td>
               </tr>);});
 
-    const totalBody = totalPrice.toFixed(2);
+    // const totalBody = totalPrice.toFixed(2);
 
     return (
         <div class="row">
@@ -79,11 +79,12 @@ const ShoppingCart = () => {
                             </tr>
                         </thead>
                         <tbody id="totalBody">
-                            {ShopList.shopList.length===0? 
+                            {/* {ShopList.shopList.length===0? 
                                     <tr>
                                     <td><center> 0 </center></td>
                                     </tr>:
-                                    totalBody}
+                                    totalBody
+                                    } */}
                         </tbody>
                     </table>
                 </div>

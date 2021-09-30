@@ -9,11 +9,11 @@ import productsapi from '../api/products';
 
 const Home = () => { 
     
-    useEffect(() => {
-        // const findProduct = productlist.filter(product => product.id == id);
-        // setProduct(findProduct[0]);
-        // console.log(product);
-    });
+    // useEffect(() => {
+    //     // const findProduct = productlist.filter(product => product.id == id);
+    //     // setProduct(findProduct[0]);
+    //     // console.log(product);
+    // });
 
     // const categorieslist = 
     
