@@ -35,18 +35,18 @@ class Customer(db.Model):
 def get_all():
 	return jsonify({"customer": [customer.json() for customer in Customer.query.all()]})
 
-# @app.route("/login", methods=["POST"])
-# def authenticate():
-#     data = request.get_json()
-#     email = data['email']
-#     password = data['password']
+@app.route("/login", methods=["POST"])
+def authenticate():
+    data = request.get_json()
+    username = data['username']
+    password = data['password']
 
-#     user = User.query.filter_by(email=email).first()
+    customer = Customer.query.filter_by(username=username).first()
     
-#     if user:
-#         check_password = sha256_crypt.verify(password, user.password)
-#         if check_password:
-#             email = user.email
-#             return jsonify({"email":email}), 201
+    if user:
+        check_password = sha256_crypt.verify(password, customer.password)
+        if check_password:
+            username = user.username
+            return jsonify({"username":username}), 201
 
-#     return jsonify({"message": "Invalid email or password."}), 404
+    return jsonify({"message": "Invalid username or password."}), 404
