@@ -53,13 +53,11 @@ def update(id):
         db.session.delete(order)
         db.session.commit()
         data = request.get_json()
-        orderID = data['id']
         customer_id = data['customer_id']
         status = data['status']
-        created_at = datetime.now()
-        order = Order(id=id, customer_id=customer_id, status=status, created_at=datetime.now())
-        db.session.add(order)
+        neworder = Order(id=id, customer_id=customer_id, status=status, created_at=datetime.now())
+        db.session.add(neworder)
         db.session.commit()
 
         return make_response(jsonify({"response": "Added"}), 200)
-        
+    return make_response(jsonify({"response": "No such order"}), 200)

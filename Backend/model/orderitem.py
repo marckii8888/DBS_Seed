@@ -76,6 +76,9 @@ def get_products():
 
 
 # Delete an item from the OrderItem table
+# Order_id = refer order
+# product id = refer product
+
 @app.route('/orderitem/<int:id>/delete', methods=['POST'])
 def delete(id):
     orderitem = OrderItem.query.filter_by(order_id=id).all()
