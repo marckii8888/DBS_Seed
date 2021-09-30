@@ -16,7 +16,6 @@ const Product = (props) => {
     if (!product.title) { return <div>Loading...</div>}
 
     return (
-        
         <div className="item">
             <h2 className="ui center aligned container">{product.title}</h2>
             <img className="ui medium rounded centered image" src={product.image} alt={product.title}/>
