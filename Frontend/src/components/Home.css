@@ -1,0 +1,91 @@
+.content {
+    margin: 3em;
+    text-align: center;
+    padding-bottom: 1em;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+  
+  .App{
+    height: 100%;
+    width: 100%;
+  }
+  
+  .flexHeader{
+    text-align: center;
+    color: black;
+    margin: 2em;
+    padding-top: 2em;
+  }
+  .flex{
+    text-align: center;
+    direction: flex;
+    justify-content: space-evenly;
+    margin: 1em 0em;
+  
+  }
+  
+  .form{
+    margin-bottom: 3em;
+  }
+  
+  .table{
+    font-size: 0.8em;
+    width: 70%;
+  }
+  
+  .formTitle{
+    size:2.5em;
+    font-weight: bold;
+  }
+  
+  div.ui.form {
+    width:20%; 
+    justify-content:'center';
+  }
+  
+  div.ui.submit.button{
+    background:#ff3c3c ;
+    color:white;
+  }
+  
+  div.ui.container{
+    width: 66%;
+    
+    }
+  
+   @media screen and (max-width: 780px) {
+      .content{
+        margin: 3em;
+        text-align: center;
+        padding-bottom: 1em;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
+      div.ui.container{
+        width:10%; 
+        padding-right: 15%;
+        
+        }
+        div.ui.form {
+          width:85%; 
+          display: flex;
+          flex-direction: column;
+          justify-content:'center';
+        }
+    } 
+  
+  .foot_cell_style{
+    font-weight: bold;
+    font-size: 1.2em;
+    text-align: right;
+   }
+   tfoot.tablefoot{
+    border-top: 1px solid rgb(190, 190, 190);
+  }
+   
+  table.ui.celled.table {
+    border-collapse: collapse;
+  }
