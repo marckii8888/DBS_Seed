@@ -32,7 +32,7 @@ const ShoppingCart = () => {
         ]
     }
 
-    const all_table_rows = ShopList.map((shopitem, index) => {
+    const all_table_rows = ShopList.shopList.map((shopitem, index) => {
       return (<tr key={index}>
                 <td>{shopitem.name}</td>
                 <td>{shopitem.quantity}</td>
