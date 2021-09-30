@@ -1,7 +1,7 @@
 import React from 'react';
 import productlist from '../datajson/products.json'
 
-const ShoppingCart = () => {
+const ShoppingCart = (props) => {
     const ShopList = {
         "shopList":[
             {
@@ -39,6 +39,7 @@ const ShoppingCart = () => {
                 <td>{shopitem.price.toFixed(2)}</td>
                 <td><button type="submit" className="ui button red">Delete</button></td>
               </tr>);});
+
     return (
         <div class="row">
             <h1 className="flexHeader">My Cart</h1>
@@ -74,7 +75,7 @@ const ShoppingCart = () => {
                             </tr>
                         </thead>
                         <tbody id="totalBody">
-                            {shoppingList.length!==0 && <td>${totalPrice.toFixed(2)}</td>
+                            {all_table_rows!==0}<td>${totalPrice.toFixed(2)}</td>
                         </tbody>
                     </table>
                 </div>
