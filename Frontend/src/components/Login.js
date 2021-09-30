@@ -16,18 +16,21 @@ const Login = ({setIsLoggedIn}) => {
     };
 
     return (        
-        <div>
-            <form className="ui form" onSubmit={attemptLogin}>
-                <div className="field">
-                    <label>Login ID</label>
-                    <input value={loginID} onChange={onLoginIDChange}/>
-                </div>
-                <div className="field">
-                    <label>Password</label>
-                    <input value={password} onChange={onPasswordChange}/>
-                </div>
-                <button type="submit" className="ui button red">Submit</button>
-            </form>
+        <div className="ui middle aligned grid">
+            <div className="eight column wide">
+                <form className="ui form" onSubmit={attemptLogin}>
+                    <div className="field">
+                        <label>Login ID</label>
+                        <input value={loginID} onChange={onLoginIDChange}/>
+                    </div>
+                    <div className="field">
+                        <label>Password</label>
+                        <input value={password} onChange={onPasswordChange}/>
+                    </div>
+                    <button type="submit" className="ui button red">Submit</button>
+                </form>
+            </div>
+            
         </div>
         // <Route 
         //     {...rest} 
