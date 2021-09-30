@@ -52,7 +52,7 @@ def authenticate():
 
     return jsonify({"message": "Invalid username or password."}), 404
 
-@app.route("/create", methods=['POST'])
+@app.route("/create_account", methods=['POST'])
 def createProfile():
     data = request.get_json()
     username = data['username']
@@ -61,17 +61,17 @@ def createProfile():
     last_name= data['last_name']
     postal_code=data['postal_code']
     gender = data['gender']
-    
+    id= data['id']
     if (Customer.query.filter_by(username=username).first()):
         return jsonify({"message": "Username '{}' already exists.".format(username)}), 400
 
-    customer = Customer(1,username,password,first_name,last_name,postal_code,gender,created_at= datetime.datetime.now())
+    customer = Customer(id,username,password,first_name,last_name,postal_code,gender,created_at= datetime.datetime.now())
 
-    try:
-        db.session.add(customer)
-        db.session.commit()
-    except:
-        return jsonify({"message": "An error occurred creating profile."}), 500
+    # try:
+    db.session.add(customer)
+    db.session.commit()
+    # except:
+    #     return jsonify({"message": "An error occurred creating profile."}), 500
 
     return jsonify(customer.json()), 201
 
