@@ -90,7 +90,4 @@ const CategoryComponent3 = (props) => {
   );
 }
 
-ReactDOM.render(<CategoryComponent3 />, document.getElementById("root3"));
-
-
 export default CategoryComponent3;

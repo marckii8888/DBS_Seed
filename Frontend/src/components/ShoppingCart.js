@@ -75,7 +75,7 @@ const ShoppingCart = (props) => {
                             </tr>
                         </thead>
                         <tbody id="totalBody">
-                            {all_table_rows!==0}<td>${totalPrice.toFixed(2)}</td>
+                            {/* {all_table_rows!==0}<td>${totalPrice.toFixed(2)}</td> */}
                         </tbody>
                     </table>
                 </div>
