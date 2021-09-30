@@ -1,8 +1,10 @@
 from flask import Flask, request, jsonify, make_response
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root123@localhost:3306/ecommerce'
+CORS(app)
 # app.config['SQLALCHEYMY_DATABASE_URI'] = 'mysql://username:password@localhost/db_name'
 
 db = SQLAlchemy(app)

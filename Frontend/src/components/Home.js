@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import ReactDOM from "react-dom";
 import CategoryComponent1 from "./CategoryComponent1.js";
 import CategoryComponent2 from "./CategoryComponent2.js";
@@ -8,7 +8,16 @@ import products from '../datajson/products.json';
 import productsapi from '../api/products';
 
 const Home = () => { 
-    
+    useEffect(() => {
+        const getproducts = async () => {
+            const products = await productsapi.get('/list_products');
+            console.log(JSON.stringify(products));
+        }           
+        getproducts();
+    }, []);
+
+
+ 
     // useEffect(() => {
     //     // const findProduct = productlist.filter(product => product.id == id);
     //     // setProduct(findProduct[0]);
