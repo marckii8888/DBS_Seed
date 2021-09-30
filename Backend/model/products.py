@@ -35,9 +35,9 @@ class Products(db.Model):
             "qty":self.qty
             }
 
-    # Methods
+# Methods
 @app.route('/list_products', methods=['GET'])
 def get_all():
     return jsonify({
-        "product": [prodcut.json() for prodcut in Products.query.all()]
+        "product": [product.json() for product in Products.query.all()]
     })
