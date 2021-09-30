@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import customerlogin from '../api/customer';
 
 const Login = ({setIsLoggedIn}) => {
 
@@ -13,6 +14,13 @@ const Login = ({setIsLoggedIn}) => {
         // if success, setIsLoggedIn(true)
         // const response = await apicall.post('/loginroute_whateveritis', {loginID, password})
         // if (response) {setIsLoggedIn(true);}
+        const response = await customerlogin.post('/login', {
+            login: loginID,
+            password
+        });
+
+        if (!response) { return console.log('Error logging in')}; // to handle
+        setIsLoggedIn(true);
     };
 
     return (        
