@@ -18,9 +18,9 @@ const Product = (props) => {
     return (
         
         <div className="item">
-            <h3>{product.title}</h3>
-            <img className="ui image" src={product.image} alt={product.title}/>
-            <h4>{product.price}</h4>
+            <h2 className="ui center aligned container">{product.title}</h2>
+            <img className="ui medium rounded centered image" src={product.image} alt={product.title}/>
+            <h2 className="ui center aligned container">Price: ${product.price}</h2>
             <h4>{product.description}</h4>
         </div>
     )
