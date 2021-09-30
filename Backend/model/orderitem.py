@@ -33,10 +33,6 @@ class OrderItem(db.Model):
     def get_product_id(self):
         return self.product_id
 
-    def create(self):
-        db.session.add(self)
-        db.session.commit()
-        return self
 
 
 
@@ -50,12 +46,7 @@ def create_todo():
     order_id = data['order_id']
     product_qty = data['product_qty']
     total_price = data['total_price']
-#    product_id = request.form['product_id']
-#    order_id = request.form['order_id']
-#    product_qty = request.form['product_qty']
-#    total_price = request.form['total_price']
     orderItem = OrderItem(product_id=product_id, order_id=order_id, product_qty=product_qty, total_price=total_price)
-    # orderItem.create()
     db.session.add(orderItem)
     db.session.commit()
     return make_response(jsonify({"response": "Added"}), 200)
@@ -78,17 +69,20 @@ def get_products():
 # Delete an item from the OrderItem table
 # Order_id = refer order
 # product id = refer product
-
 @app.route('/orderitem/<int:id>/delete', methods=['POST'])
 def delete(id):
-    orderitem = OrderItem.query.filter_by(order_id=id).all()
-    if orderitem:
-        db.session.delete(orderitem)
-        db.session.commit()
+    orderitems = OrderItem.query.filter_by(order_id=id).all()
+    if orderitems:
+        for orderitem in orderitems:
+            db.session.delete(orderitem)
+            db.session.commit()
         return jsonify({
             "response" : "item deleted"
         })
 
+    return jsonify({
+        "response" : "item not found"
+    })
 # Update an order from OrderItem table
 
 '''
@@ -111,11 +105,4 @@ def update(id):
         return f"Employee with id = {id} Does nit exist"
  
     return render_template('update.html', employee = employee)
-'''
-
-
-'''
-− Insert products added from frontend cart into database [3]
-− Delete from the OrderItem table [5]
-− Update the Orders, Products, and OrderItem table [6]
 '''
